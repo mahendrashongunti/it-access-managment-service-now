@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-base-100 text-base-content;
+  }
+}
+
+@layer components {
+  .card-bordered {
+    @apply border border-base-300;
+  }
+  
+  .btn-primary {
+    @apply bg-primary text-primary-content hover:bg-primary-focus;
+  }
+}
