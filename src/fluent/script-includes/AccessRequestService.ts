@@ -18,7 +18,7 @@ AccessRequestService.prototype = {
      * @returns {String} - sys_id of created request
      */
     createRequest: function(data) {
-        var gr = new GlideRecord('x_itam_access_request');
+        var gr = new GlideRecord('x_2060089_itacc_access_request');
         gr.initialize();
         gr.requester = data.requester || gs.getUserID();
         gr.beneficiary = data.beneficiary || gs.getUserID();
@@ -47,7 +47,7 @@ AccessRequestService.prototype = {
      * @returns {Boolean} - Success status
      */
     submitRequest: function(requestId) {
-        var gr = new GlideRecord('x_itam_access_request');
+        var gr = new GlideRecord('x_2060089_itacc_access_request');
         if (!gr.get(requestId)) {
             return false;
         }
@@ -80,7 +80,7 @@ AccessRequestService.prototype = {
      * @returns {Boolean} - Success status
      */
     cancelRequest: function(requestId, reason) {
-        var gr = new GlideRecord('x_itam_access_request');
+        var gr = new GlideRecord('x_2060089_itacc_access_request');
         if (!gr.get(requestId)) {
             return false;
         }
@@ -108,7 +108,7 @@ AccessRequestService.prototype = {
      * @param {String} requestId - Request sys_id
      */
     processApproval: function(requestId) {
-        var gr = new GlideRecord('x_itam_access_request');
+        var gr = new GlideRecord('x_2060089_itacc_access_request');
         if (!gr.get(requestId)) {
             return;
         }
@@ -122,7 +122,7 @@ AccessRequestService.prototype = {
         gr.update();
         
         // Check if auto-provision
-        var app = new GlideRecord('x_itam_application');
+        var app = new GlideRecord('x_2060089_itacc_application');
         if (app.get(gr.application) && app.auto_provision) {
             this._provisionAccess(gr);
         } else {
@@ -139,7 +139,7 @@ AccessRequestService.prototype = {
      */
     _provisionAccess: function(requestGr) {
         // Create assignment
-        var assignment = new GlideRecord('x_itam_assignment');
+        var assignment = new GlideRecord('x_2060089_itacc_assignment');
         assignment.initialize();
         assignment.user = requestGr.beneficiary;
         assignment.application = requestGr.application;
@@ -171,7 +171,7 @@ AccessRequestService.prototype = {
      * @param {GlideRecord} requestGr - Request record
      */
     _createApprovals: function(requestGr) {
-        var accessType = new GlideRecord('x_itam_access_type');
+        var accessType = new GlideRecord('x_2060089_itacc_access_type');
         if (!accessType.get(requestGr.access_type)) {
             return;
         }
@@ -204,7 +204,7 @@ AccessRequestService.prototype = {
         var approval = new GlideRecord('sysapproval_approver');
         approval.initialize();
         approval.sysapproval = requestGr.sys_id;
-        approval.source_table = 'x_itam_access_request';
+        approval.source_table = 'x_2060089_itacc_access_request';
         approval.approver = this._getApprover(requestGr, type);
         approval.state = 'pending';
         approval.setValue('approver_type', type);
@@ -225,7 +225,7 @@ AccessRequestService.prototype = {
                 return user.manager;
             }
         } else if (type == 'resource_owner') {
-            var app = new GlideRecord('x_itam_application');
+            var app = new GlideRecord('x_2060089_itacc_application');
             if (app.get(requestGr.application)) {
                 return app.owner;
             }
@@ -241,7 +241,7 @@ AccessRequestService.prototype = {
      * @param {GlideRecord} gr - Request record
      */
     _calculateRiskLevel: function(gr) {
-        var accessType = new GlideRecord('x_itam_access_type');
+        var accessType = new GlideRecord('x_2060089_itacc_access_type');
         if (accessType.get(gr.access_type)) {
             gr.risk_level = accessType.risk_level;
         }
@@ -294,7 +294,7 @@ AccessRequestService.prototype = {
      * @param {Object} changes - Changes made
      */
     _logAudit: function(entityId, action, changes) {
-        var audit = new GlideRecord('x_itam_audit_log');
+        var audit = new GlideRecord('x_2060089_itacc_audit_log');
         audit.initialize();
         audit.entity_type = 'request';
         audit.entity_id = entityId;

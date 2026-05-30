@@ -3,7 +3,7 @@
  * 
  * Triggers when request state changes.
  * 
- * Table: x_itam_access_request
+ * Table: x_2060089_itacc_access_request
  * When: after
  * Update: true
  * Filter: State changes
@@ -59,7 +59,7 @@ export const RequestStateChangedBusinessRule = `
         gs.eventQueue('itam.request.approved', request, request.requester, request.beneficiary);
         
         // Check auto-provision
-        var app = new GlideRecord('x_itam_application');
+        var app = new GlideRecord('x_2060089_itacc_application');
         if (app.get(request.application) && app.auto_provision == true) {
             // Auto-provision will be handled by separate workflow
             gs.eventQueue('itam.request.auto_provision', request, '', '');
@@ -102,7 +102,7 @@ export const RequestStateChangedBusinessRule = `
     }
     
     function logStateChange(request, oldState, newState) {
-        var audit = new GlideRecord('x_itam_audit_log');
+        var audit = new GlideRecord('x_2060089_itacc_audit_log');
         audit.initialize();
         audit.entity_type = 'request';
         audit.entity_id = request.sys_id.toString();

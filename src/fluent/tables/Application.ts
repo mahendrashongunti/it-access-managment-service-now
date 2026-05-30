@@ -1,5 +1,5 @@
 /**
- * ServiceNow Table Definition: Application (x_itam_application)
+ * ServiceNow Table Definition: Application (x_2060089_itacc_application)
  * 
  * Represents business applications that users can request access to.
  * Extends: None (Base table)
@@ -26,7 +26,7 @@ export interface ApplicationTable {
 
 // Fluent API Definition
 export const ApplicationTableDefinition = {
-  name: 'x_itam_application',
+  name: 'x_2060089_itacc_application',
   label: 'Application',
   fields: [
     { name: 'name', type: 'string', label: 'Name', mandatory: true, max_length: 100 },

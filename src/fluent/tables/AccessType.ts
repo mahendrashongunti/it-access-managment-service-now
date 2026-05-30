@@ -1,5 +1,5 @@
 /**
- * ServiceNow Table Definition: Access Type (x_itam_access_type)
+ * ServiceNow Table Definition: Access Type (x_2060089_itacc_access_type)
  * 
  * Represents specific types of access within an application.
  * Extends: None (Base table)
@@ -9,7 +9,7 @@
 
 export interface AccessTypeTable {
   sys_id: string
-  application: string // Reference to x_itam_application
+  application: string // Reference to x_2060089_itacc_application
   name: string
   description: string
   risk_level: 'low' | 'medium' | 'high' | 'critical'
@@ -26,14 +26,14 @@ export interface AccessTypeTable {
 
 // Fluent API Definition
 export const AccessTypeTableDefinition = {
-  name: 'x_itam_access_type',
+  name: 'x_2060089_itacc_access_type',
   label: 'Access Type',
   fields: [
     {
       name: 'application',
       type: 'reference',
       label: 'Application',
-      reference: 'x_itam_application',
+      reference: 'x_2060089_itacc_application',
       mandatory: true,
     },
     { name: 'name', type: 'string', label: 'Name', mandatory: true, max_length: 100 },
