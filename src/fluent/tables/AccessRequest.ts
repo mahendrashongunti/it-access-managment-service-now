@@ -1,5 +1,5 @@
 /**
- * ServiceNow Table Definition: Access Request (x_itam_access_request)
+ * ServiceNow Table Definition: Access Request (x_2060089_itacc_access_request)
  * 
  * Main table for access requests.
  * Extends: task (inherits workflow capabilities)
@@ -12,8 +12,8 @@ export interface AccessRequestTable {
   number: string // Auto-generated request number
   requester: string // Reference to sys_user
   beneficiary: string // Reference to sys_user
-  application: string // Reference to x_itam_application
-  access_type: string // Reference to x_itam_access_type
+  application: string // Reference to x_2060089_itacc_application
+  access_type: string // Reference to x_2060089_itacc_access_type
   business_justification: string
   state: string // Draft, Submitted, Pending Approval, Approved, Rejected, Provisioning, Completed, Expired, Revoked, Cancelled
   priority: string // Low, Medium, High, Critical
@@ -33,7 +33,7 @@ export interface AccessRequestTable {
 
 // Fluent API Definition
 export const AccessRequestTableDefinition = {
-  name: 'x_itam_access_request',
+  name: 'x_2060089_itacc_access_request',
   label: 'Access Request',
   extends: 'task',
   number_prefix: 'REQ',
@@ -56,14 +56,14 @@ export const AccessRequestTableDefinition = {
       name: 'application',
       type: 'reference',
       label: 'Application',
-      reference: 'x_itam_application',
+      reference: 'x_2060089_itacc_application',
       mandatory: true,
     },
     {
       name: 'access_type',
       type: 'reference',
       label: 'Access Type',
-      reference: 'x_itam_access_type',
+      reference: 'x_2060089_itacc_access_type',
       mandatory: true,
     },
     {

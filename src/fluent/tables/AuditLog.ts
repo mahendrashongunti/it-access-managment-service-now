@@ -1,5 +1,5 @@
 /**
- * ServiceNow Table Definition: Audit Log (x_itam_audit_log)
+ * ServiceNow Table Definition: Audit Log (x_2060089_itacc_audit_log)
  * 
  * Tracks all changes and actions for compliance.
  * Extends: None (Base table)
@@ -21,7 +21,7 @@ export interface AuditLogTable {
 
 // Fluent API Definition
 export const AuditLogTableDefinition = {
-  name: 'x_itam_audit_log',
+  name: 'x_2060089_itacc_audit_log',
   label: 'Audit Log',
   fields: [
     { name: 'entity_type', type: 'string', label: 'Entity Type', mandatory: true, max_length: 50 },

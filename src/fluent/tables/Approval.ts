@@ -9,7 +9,7 @@
 
 export interface ApprovalTable {
   sys_id: string
-  sysapproval: string // Reference to source document (x_itam_access_request)
+  sysapproval: string // Reference to source document (x_2060089_itacc_access_request)
   approver: string // Reference to sys_user
   approver_type: string // Manager, Resource Owner, Security, Compliance
   state: string // Pending, Approved, Rejected, Cancelled
@@ -25,7 +25,7 @@ export interface ApprovalTable {
 
 // Fluent API Definition
 export const ApprovalTableDefinition = {
-  name: 'x_itam_approval',
+  name: 'x_2060089_itacc_approval',
   label: 'Access Request Approval',
   extends: 'sysapproval_approver',
   fields: [

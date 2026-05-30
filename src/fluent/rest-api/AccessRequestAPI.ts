@@ -24,7 +24,7 @@ export const AccessRequestRestAPI = {
     var userId = gs.getUserID();
     
     // Build query
-    var gr = new GlideRecord('x_itam_access_request');
+    var gr = new GlideRecord('x_2060089_itacc_access_request');
     
     // Apply filters
     if (filter == 'my_requests') {
@@ -115,7 +115,7 @@ export const AccessRequestRestAPI = {
         var requestId = requestService.createRequest(data);
         
         // Get created record
-        var gr = new GlideRecord('x_itam_access_request');
+        var gr = new GlideRecord('x_2060089_itacc_access_request');
         if (gr.get(requestId)) {
             response.setStatus(201);
             response.setBody({
@@ -154,7 +154,7 @@ export const AccessRequestRestAPI = {
     
     var requestId = request.pathParams.id;
     
-    var gr = new GlideRecord('x_itam_access_request');
+    var gr = new GlideRecord('x_2060089_itacc_access_request');
     if (!gr.get(requestId)) {
         response.setStatus(404);
         response.setBody({

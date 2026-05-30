@@ -23,7 +23,7 @@ export interface DepartmentTable {
 
 // Fluent API Definition (for ServiceNow SDK)
 export const DepartmentTableDefinition = {
-  name: 'x_itam_department',
+  name: 'x_2060089_itacc_department',
   label: 'Department',
   fields: [
     { name: 'name', type: 'string', label: 'Name', mandatory: true, max_length: 100 },
@@ -33,7 +33,7 @@ export const DepartmentTableDefinition = {
       name: 'parent_department',
       type: 'reference',
       label: 'Parent Department',
-      reference: 'x_itam_department',
+      reference: 'x_2060089_itacc_department',
     },
     { name: 'description', type: 'string', label: 'Description', max_length: 1000 },
     { name: 'active', type: 'boolean', label: 'Active', default_value: true },

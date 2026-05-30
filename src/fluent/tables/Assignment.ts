@@ -1,5 +1,5 @@
 /**
- * ServiceNow Table Definition: Assignment (x_itam_assignment)
+ * ServiceNow Table Definition: Assignment (x_2060089_itacc_assignment)
  * 
  * Represents granted access to users.
  * Extends: None (Base table)
@@ -10,9 +10,9 @@
 export interface AssignmentTable {
   sys_id: string
   user: string // Reference to sys_user
-  application: string // Reference to x_itam_application
-  access_type: string // Reference to x_itam_access_type
-  request: string // Reference to x_itam_access_request
+  application: string // Reference to x_2060089_itacc_application
+  access_type: string // Reference to x_2060089_itacc_access_type
+  request: string // Reference to x_2060089_itacc_access_request
   state: string // Active, Expired, Revoked
   granted_at: string
   expires_at: string
@@ -28,7 +28,7 @@ export interface AssignmentTable {
 
 // Fluent API Definition
 export const AssignmentTableDefinition = {
-  name: 'x_itam_assignment',
+  name: 'x_2060089_itacc_assignment',
   label: 'Access Assignment',
   fields: [
     { name: 'user', type: 'reference', label: 'User', reference: 'sys_user', mandatory: true },
@@ -36,21 +36,21 @@ export const AssignmentTableDefinition = {
       name: 'application',
       type: 'reference',
       label: 'Application',
-      reference: 'x_itam_application',
+      reference: 'x_2060089_itacc_application',
       mandatory: true,
     },
     {
       name: 'access_type',
       type: 'reference',
       label: 'Access Type',
-      reference: 'x_itam_access_type',
+      reference: 'x_2060089_itacc_access_type',
       mandatory: true,
     },
     {
       name: 'request',
       type: 'reference',
       label: 'Request',
-      reference: 'x_itam_access_request',
+      reference: 'x_2060089_itacc_access_request',
       mandatory: true,
     },
     {
